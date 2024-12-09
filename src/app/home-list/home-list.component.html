@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loc8rPublic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Movie Finder Heading -->
+    <div class="row">
+      <div class="col-12">
+        <h1>Movie Finder</h1>
+        <p>Find your next favorite movie!</p>
+      </div>
+    </div>
+
+    <!-- Movie Cards -->
+    <div class="row flex-row flex-nowrap overflow-auto">
+      <!-- Loop through each movie in the movies array -->
+      <div class="col-md-4" *ngFor="let movie of movies">
+        <div class="card m-2">
+          <div class="card-block">
+            <h4>
+              <a [href]="'/movie/' + movie._id">{{movie.title}}</a>
+              <small>
+                <i class="fa fa-star text-warning" *ngFor="let star of [].constructor(movie.rating); let i = index"></i>
+                <i class="fa fa-star-o text-muted" *ngFor="let star of [].constructor(5 - movie.rating); let i = index"></i>
+              </small>
+            </h4>
+            <p class="Director">Directed by: {{movie.director}}</p>
+            <p class="ReleaseDate">Release Date: {{movie.releaseDate}}</p>
+
+            <!-- Genres Section -->
+            <div class="facilities">
+              <span *ngFor="let genre of movie.genres" class="badge badge-warning">{{genre}}</span>
+            </div>
+
+            <!-- Description Section -->
+            <p class="Description">
+              <strong>Description:</strong> {{movie.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+  
